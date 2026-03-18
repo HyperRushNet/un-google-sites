@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#0a0a0a;--card-bg:rgba(20,20,20,0.6);--card-hover:rgba(40,40,40,0.6);--text:#e5e5e5;--text-muted:#737373;--border:hsla(0,0%,100%,0.08);--accent:#818cf8}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Outfit,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column}body::before{content:'';position:fixed;top:0;left:0;right:0;height:1px;background:#6e6e6e;z-index:9999}.bg{inset:-20px;z-index:-1;background:url(https://wallpapers.com/images/hd/dark-gaming-1920-x-1200-wallpaper-tkusf3ukacvbbldd.jpg) 50%/cover no-repeat fixed;opacity:.5;filter:blur(8px)}.bg,.top-fade{position:fixed}.top-fade{top:0;left:0;right:0;height:140px;background:linear-gradient(180deg,#000,transparent);pointer-events:none;z-index:1}::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#333;border-radius:10px}.container{max-width:900px;width:100%;margin:0 auto;padding:0 24px;position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;flex-grow:1}main{padding:40px 0 80px;width:100%}#lock-screen{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(8px)}.lock-box{background:rgba(20,20,20,.8);border:1px solid var(--border);border-radius:20px;padding:40px;width:90%;max-width:360px;text-align:center;backdrop-filter:blur(16px)}.lock-title{margin-bottom:24px}.lock-title,.pin-input{font-size:1.2rem;color:#fff}.pin-input{width:100%;padding:14px 18px;background:rgba(0,0,0,.4);border:1px solid var(--border);border-radius:12px;font-family:inherit;text-align:center;letter-spacing:8px;outline:none;transition:border .2s}.pin-input:focus{border-color:var(--accent)}.error-msg{color:#ef4444;font-size:.85rem;margin-top:12px;opacity:0;transition:opacity .2s;height:20px}.error-msg.show{opacity:1}@keyframes shake{0%,to{transform:translateX(0)}10%,30%,50%,70%,90%{transform:translateX(-5px)}20%,40%,60%,80%{transform:translateX(5px)}}.shake{animation:shake .4s cubic-bezier(.36,.07,.19,.97) both}#main-content{display:none}#links-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;justify-items:center;width:100%}.link-card{background:var(--card-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:16px;padding:24px;width:100%;min-height:140px;display:flex;align-items:center;justify-content:center;transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative;overflow:hidden;text-decoration:none}.link-card:hover{background:var(--card-hover);border-color:hsla(0,0%,100%,.2);transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.3)}.link-info{display:flex;flex-direction:column;gap:8px;width:100%;text-align:center;z-index:1}.link-name{font-weight:600;font-size:1.1rem;color:#fff}.link-name,.link-url{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.link-url{font-size:.8rem;color:var(--text-muted);transition:color .2s}.link-card:hover .link-url{color:var(--accent)}footer{text-align:center;padding:20px;color:#404040;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;opacity:.5;margin-top:auto}@media(max-width:600px){#links-list{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="top-fade"></div>
+
+    <div id="lock-screen">
+        <div class="lock-box">
+            <div class="lock-title">Enter PIN to Access</div>
+            <input type="password" id="pin-input" class="pin-input" maxlength="10" autocomplete="off" autofocus placeholder="••••">
+            <div id="error" class="error-msg">Incorrect PIN</div>
+        </div>
+    </div>
+
+    <div class="container" id="main-content">
+        <main>
+            <div id="links-list"></div>
+        </main>
+        <footer>The Unblocked Network</footer>
+    </div>
+
+    <script>
+    !function(){
+    const e=[
+        {name:"Classroom G'+",url:"https://sites.google.com/view/drive-u-7-home-10"},
+        {name:"Classroom 6x",url:"https://sites.google.com/view/classroom6x"},
+        {name:"Classroom Games",url:"https://dnrweqffuwjtx.cloudfront.net/new-games"},
+        {name:"FAF Games",url:"https://faf-game.github.io"}
+    ],
+    t=e=>document.getElementById(e),n=t("lock-screen"),s=t("main-content"),a=t("pin-input"),o=t("error"),i=t("links-list"),r=e=>{const t=document.createElement("div");return t.textContent=e,t.innerHTML},c=async e=>{if("keydown"===e.type&&"Enter"!==e.key)return;const t=a.value;if(t.length>=4){"c2c2cbd7d05c03ab560138b5633fd4058c92247fad26e23accfc3e4eefa52c58"===await(async e=>{const t=(new TextEncoder).encode(e),n=await crypto.subtle.digest("SHA-256",t);return Array.from(new Uint8Array(n)).map((e=>e.toString(16).padStart(2,"0"))).join("")})(t)?(n.style.opacity="0",n.style.transition="opacity 0.3s",setTimeout((()=>{n.style.display="none",s.style.display="flex",l()}),300)):(o.classList.add("show"),a.classList.add("shake"),setTimeout((()=>a.classList.remove("shake")),400),setTimeout((()=>o.classList.remove("show")),2e3),a.value="",e.preventDefault())}};a.addEventListener("input",c),a.addEventListener("keydown",c);const l=()=>{i.innerHTML="",e.forEach((e=>{const t=document.createElement("div");t.className="link-card",t.onclick=()=>{return window.open((t=e.url).startsWith("http://")||t.startsWith("https://")?t:"https://"+t,"_blank");var t};const n=document.createElement("div");n.className="link-info",n.innerHTML=`\n                    <span class="link-name">${r(e.name)}</span>\n                    <span class="link-url">${r(e.url)}</span>\n                `,t.appendChild(n),i.appendChild(t)}))}}();
+    </script>
+</body>
+</html>
